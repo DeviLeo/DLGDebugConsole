@@ -14,7 +14,7 @@
 #import "DLGDebugConsoleCommandConsole.h"
 #import "DLGDebugConsoleCommandShowFrame.h"
 
-// Import commands' headers here
+// import commands' headers here
 #import "DLGDebugConsoleCommandNet.h"
 #import "DLGDebugConsoleCommandShowUserInfo.h"
 #import "DLGDebugConsoleCommandShowServerInfo.h"

@@ -16,8 +16,9 @@
     NSArray *commands = @[
                           [[DLGDebugConsoleCommandHelp alloc] initWithDelegate:delegate],
                           [[DLGDebugConsoleCommandConsole alloc] initWithDelegate:delegate],
-                          [[DLGDebugConsoleCommandNet alloc] initWithDelegate:delegate],
                           [[DLGDebugConsoleCommandShowFrame alloc] initWithDelegate:delegate],
+                          // Add commands' initialization here
+                          [[DLGDebugConsoleCommandNet alloc] initWithDelegate:delegate],
                           [[DLGDebugConsoleCommandShowUserInfo alloc] initWithDelegate:delegate],
                           [[DLGDebugConsoleCommandShowServerInfo alloc] initWithDelegate:delegate],
                           [[DLGDebugConsoleCommandSample alloc] initWithDelegate:delegate],
