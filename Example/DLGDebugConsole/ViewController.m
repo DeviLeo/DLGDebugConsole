@@ -121,7 +121,11 @@ static NSMutableString *networkLogs;
 }
 
 + (void)setUser:(NSDictionary *)user {
-    userinfo = user;
+    NSMutableDictionary *userCopy = [NSMutableDictionary dictionaryWithDictionary:userinfo];
+    [user enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        userCopy[key] = obj;
+    }];
+    userinfo = userCopy;
 }
 
 + (void)setDebugNetwork:(BOOL)debug {

@@ -8,13 +8,15 @@
 
 #import "DLGDebugConsoleAgent.h"
 
+#ifdef DEBUG
+
+// import headers here
+#import "ViewController.h"
+
+// define here
 #define CONFIG_KEY_NETWORK_DEBUG    @"NETWORK_DEBUG"
 #define CONFIG_KEY_SERVER_HOST      @"SERVER_HOST"
 #define CONFIG_MASK_SERVER_HOST     (1)
-
-#ifdef DEBUG
-
-#import "ViewController.h"
 
 #endif
 
@@ -35,15 +37,49 @@
 - (id)init {
     self = [super init];
     if (self) {
-        [self initVars];
-        [self loadServerConfig];
+        [self initNetCommandVars];
+        [self initServerCommandVars];
     }
     return self;
 }
 
-- (void)initVars {
-    _enableDebugNetwork = [self loadNetworkDebugConfig];
-    [ViewController setDebugNetwork:_enableDebugNetwork];
+#pragma mark - Show Frame Command's Methods
+- (CGRect)getCurrentViewFrame {
+    UIViewController *root = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *top = root;
+    while (top.presentedViewController) top = top.presentedViewController;
+    return top.view.frame;
+}
+
+- (CGRect)getStatusBarFrame {
+    UIApplication *app = [UIApplication sharedApplication];
+    return app.statusBarFrame;
+}
+
+- (CGRect)getNavigationBarFrame {
+    CGRect frame = CGRectZero;
+    UIApplication *app = [UIApplication sharedApplication];
+    UIViewController *root = app.keyWindow.rootViewController;
+    if ([root isKindOfClass:[UINavigationController class]]) {
+        frame = ((UINavigationController *)root).navigationBar.frame;
+    }
+    return frame;
+}
+
+- (CGRect)getTabBarFrame {
+    CGRect frame = CGRectZero;
+    UIApplication *app = [UIApplication sharedApplication];
+    UIViewController *root = app.keyWindow.rootViewController;
+    if ([root isKindOfClass:[UITabBarController class]]) {
+        frame = ((UITabBarController *)root).tabBar.frame;
+    }
+    return frame;
+}
+
+// Other commands' methods here
+#pragma mark - Server command
+- (void)initServerCommandVars {
+    [self loadServerConfig];
 }
 
 - (void)setServerHost:(NSString *)serverHost {
@@ -51,7 +87,6 @@
     [self saveServerConfig:CONFIG_MASK_SERVER_HOST];
 }
 
-#pragma mark - Server Host
 - (NSArray *)fastSwitchServerHostList {
     // @[@"App接口服务器"]
     // @[@"Server Host"]
@@ -89,36 +124,7 @@
     [self saveServerConfig:(CONFIG_MASK_SERVER_HOST)];
 }
 
-- (void)saveNetworkDebugConfig:(BOOL)debug {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setValue:@(debug) forKey:CONFIG_KEY_NETWORK_DEBUG];
-}
-
-- (BOOL)loadNetworkDebugConfig {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    BOOL debug = [userDefaults boolForKey:CONFIG_KEY_NETWORK_DEBUG];
-    return debug;
-}
-
-#pragma mark -
-- (CGRect)getCurrentViewFrame {
-    UIViewController *root = [UIApplication sharedApplication].keyWindow.rootViewController;
-    UIViewController *top = root;
-    while (top.presentedViewController) top = top.presentedViewController;
-    return top.view.frame;
-}
-
-- (CGRect)getStatusBarFrame {
-    UIApplication *app = [UIApplication sharedApplication];
-    return app.statusBarFrame;
-}
-
-- (CGRect)getNavigationBarFrame {
-    UIApplication *app = [UIApplication sharedApplication];
-    UINavigationController *root = (UINavigationController *)app.keyWindow.rootViewController;
-    return root.navigationBar.frame;
-}
-
+#pragma mark - User command
 - (NSDictionary *)getUserInfo {
     NSDictionary *user = [ViewController user];
     return user;
@@ -128,6 +134,23 @@
     [ViewController setUser:updateUserInfo];
     
     return YES;
+}
+
+#pragma mark - Net command
+- (void)initNetCommandVars {
+    _enableDebugNetwork = [self loadNetworkDebugConfig];
+    [ViewController setDebugNetwork:_enableDebugNetwork];
+}
+
+- (void)saveNetworkDebugConfig:(BOOL)debug {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:@(debug) forKey:CONFIG_KEY_NETWORK_DEBUG];
+}
+
+- (BOOL)loadNetworkDebugConfig {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL debug = [userDefaults boolForKey:CONFIG_KEY_NETWORK_DEBUG];
+    return debug;
 }
 
 - (void)setEnableDebugNetwork:(BOOL)enableDebugNetwork {

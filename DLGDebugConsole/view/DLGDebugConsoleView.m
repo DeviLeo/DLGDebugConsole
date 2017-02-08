@@ -434,7 +434,7 @@
     return YES;
 }
 
-#pragma mark - DebugViewDelegate
+#pragma mark - ConsoleViewDelegate
 - (CGRect)collapsedFrame {
     return self.rcCollapsedFrame;
 }

@@ -68,7 +68,7 @@
     CGRect statusBarFrame = [agent getStatusBarFrame];
     CGRect navigationBarFrame = [agent getNavigationBarFrame];
     CGRect currentViewFrame = [agent getCurrentViewFrame];
-    CGRect tabBarFrame = CGRectZero;
+    CGRect tabBarFrame = [agent getTabBarFrame];
     
     BOOL showAll = (params.count == 0 || [params containsObject:((DLGDebugConsoleCommandParameter *)self.PARAMS[0]).param]);
     
