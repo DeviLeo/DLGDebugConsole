@@ -34,7 +34,7 @@ Copy [DLGDebugConsole folder](https://github.com/DeviLeo/DLGDebugConsole/tree/ma
 #### (2) Write a command
 Writing a command is complicated. Be patient. Here is a sample.  
 
-***DLGDebugConsoleCommandSample.h***
+***[DLGDebugConsoleCommandSample.h](https://github.com/DeviLeo/DLGDebugConsole/blob/master/Example/DLGDebugConsole/DLGDebugConsole/commands/DLGDebugConsoleCommandSample.h)***
 ```Objective-C
 #import "DLGDebugConsoleCommand.h"
 
@@ -44,7 +44,7 @@ Writing a command is complicated. Be patient. Here is a sample.
 @end
 ```
 
-***DLGDebugConsoleCommandSample.m***
+***[DLGDebugConsoleCommandSample.m](https://github.com/DeviLeo/DLGDebugConsole/blob/master/Example/DLGDebugConsole/DLGDebugConsole/commands/DLGDebugConsoleCommandSample.m)***
 ```Objective-C
 #import "DLGDebugConsoleCommandSample.h"
 
@@ -92,7 +92,7 @@ Writing a command is complicated. Be patient. Here is a sample.
 @end
 ```
 
-***Implement "initParameters" method***
+***Implement "initParameters" method***  
 There are two parameters, "-p" and "-s".
 ```Objective-C
 - (void)initParameters {
@@ -212,7 +212,7 @@ There are two parameters, "-p" and "-s".
 ```
 
 Finally, add "DLGDebugConsoleCommandSample" initialization into DLGDebugConsoleCommands class.
-***DLGDebugConsoleCommands.h***
+***[DLGDebugConsoleCommands.h](https://github.com/DeviLeo/DLGDebugConsole/blob/master/Example/DLGDebugConsole/DLGDebugConsole/DLGDebugConsoleCommands.h)***
 ```Objective-C
 #import <Foundation/Foundation.h>
 
@@ -238,7 +238,7 @@ Finally, add "DLGDebugConsoleCommandSample" initialization into DLGDebugConsoleC
 @end
 ```
 
-***DLGDebugConsoleCommands.m***
+***[DLGDebugConsoleCommands.m](https://github.com/DeviLeo/DLGDebugConsole/blob/master/Example/DLGDebugConsole/DLGDebugConsole/DLGDebugConsoleCommands.m)***
 ```Objective-C
 #import "DLGDebugConsoleCommands.h"
 
@@ -273,4 +273,4 @@ None.
 None.
 
 ## 5. License
-See [LICENSE](https://github.com/DeviLeo/DLGDebugConsole/blob/master/LICENSE "MIT License")
+See [LICENSE](https://github.com/DeviLeo/DLGDebugConsole/blob/master/LICENSE "MIT License").
