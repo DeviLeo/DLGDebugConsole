@@ -13,6 +13,17 @@ static NSDictionary *userinfo;
 static BOOL debugNetwork;
 static NSMutableString *networkLogs;
 
+#ifdef DEBUG
+
+#import "DLGDebugConsoleAgent.h"
+#define SERVER_HOST ([DLGDebugConsoleAgent instance].serverHost)
+
+#else
+
+#define SERVER_HOST @"192.168.1.1"
+
+#endif
+
 @interface ViewController ()
 
 @property (nonatomic, weak) IBOutlet UILabel *lblUserInfo;
@@ -61,12 +72,12 @@ static NSMutableString *networkLogs;
 
 - (IBAction)connect {
     BOOL success = arc4random() % 2 == 1;
-    _lblNetworkStatus.text = [NSString stringWithFormat:@"Connecting...%@",
-                              success ? @"SUCCESS" : @"FAILED"];
+    _lblNetworkStatus.text = [NSString stringWithFormat:@"Connecting %@...%@",
+                              SERVER_HOST, success ? @"SUCCESS" : @"FAILED"];
     if (debugNetwork) {
-        [networkLogs appendString:@"Connecting...\n"];
+        [networkLogs appendFormat:@"Connecting %@...\n", SERVER_HOST];
         if (success) {
-            [networkLogs appendString:@"Found server. Validating...\n"];
+            [networkLogs appendString:@"Connected. Validating...\n"];
             [networkLogs appendString:@"Success. Get server information...\n"];
             [networkLogs appendString:@"Gotcha! Downloading files...\n"];
             [networkLogs appendString:@"Done!\n"];

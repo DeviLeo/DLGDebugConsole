@@ -61,12 +61,14 @@
                          ];
     return servers;
 }
+
 - (void)fastSwitchServerHost:(NSInteger)index {
     NSArray *servers = [self fastSwitchServerHostList];
     NSArray *server = servers[index];
     _serverHost = server[0];
     [self saveServerConfig];
 }
+
 - (void)loadServerConfig {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *serverHost = [userDefaults stringForKey:CONFIG_KEY_SERVER_HOST];
