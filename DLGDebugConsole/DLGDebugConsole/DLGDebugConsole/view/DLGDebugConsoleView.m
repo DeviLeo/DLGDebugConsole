@@ -59,6 +59,7 @@
     self.lastCommand = @"";
     
     _shouldNotBeDragged = NO;
+    _expanded = NO;
 }
 
 - (void)initViews {
@@ -367,6 +368,7 @@
                      completion:^(BOOL finished) {
                          self.frame = self.rcExpandedFrame;
                          self.alpha = DLG_DEBUG_CONSOLE_VIEW_MAX_ALPHA;
+                         _expanded = YES;
                      }];
     
     [self addGesture];
@@ -389,6 +391,7 @@
                      completion:^(BOOL finished) {
                          self.frame = self.rcCollapsedFrame;
                          self.alpha = DLG_DEBUG_CONSOLE_VIEW_MIN_ALPHA;
+                         _expanded = NO;
                      }];
 }
 

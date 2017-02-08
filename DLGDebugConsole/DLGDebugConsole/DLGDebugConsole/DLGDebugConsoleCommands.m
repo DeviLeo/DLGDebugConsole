@@ -15,7 +15,7 @@
 + (NSArray *)commandsWithDelegate:(id<DLGDebugConsoleViewDelegate>)delegate {
     NSArray *commands = @[
                           [[DLGDebugConsoleCommandHelp alloc] initWithDelegate:delegate],
-                          [[DLGDebugConsoleCommandConsoleButton alloc] initWithDelegate:delegate],
+                          [[DLGDebugConsoleCommandConsole alloc] initWithDelegate:delegate],
                           [[DLGDebugConsoleCommandNet alloc] initWithDelegate:delegate],
                           [[DLGDebugConsoleCommandShowFrame alloc] initWithDelegate:delegate],
                           [[DLGDebugConsoleCommandShowUserInfo alloc] initWithDelegate:delegate],

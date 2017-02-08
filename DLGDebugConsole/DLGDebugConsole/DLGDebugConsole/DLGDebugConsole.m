@@ -7,7 +7,7 @@
 //
 
 #import "DLGDebugConsole.h"
-#import "DLGDebugConsoleAgent.h"
+#import "DLGDebugConsoleView.h"
 
 @implementation DLGDebugConsole
 
@@ -31,6 +31,16 @@
     
     // Init DebugAgent
     [DLGDebugConsoleAgent instance];
+}
+
++ (void)removeConsoleView {
+    DLGDebugConsoleView *consoleView = [DLGDebugConsoleView instance];
+    if (consoleView.expanded) [consoleView doCollapse];
+    NSArray *gestures = consoleView.gestureRecognizers;
+    for (UIGestureRecognizer *gesture in gestures) {
+        [consoleView removeGestureRecognizer:gesture];
+    }
+    [consoleView removeFromSuperview];
 }
 
 @end

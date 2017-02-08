@@ -21,7 +21,7 @@
 		E83508F01E496B3C007DAECA /* DLGDebugConsoleCommandShowFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = E83508DB1E496B3C007DAECA /* DLGDebugConsoleCommandShowFrame.m */; };
 		E83508F11E496B3C007DAECA /* DLGDebugConsoleCommandShowServerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E83508DD1E496B3C007DAECA /* DLGDebugConsoleCommandShowServerInfo.m */; };
 		E83508F21E496B3C007DAECA /* DLGDebugConsoleCommandShowUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E83508DF1E496B3C007DAECA /* DLGDebugConsoleCommandShowUserInfo.m */; };
-		E83508F31E496B3C007DAECA /* DLGDebugConsoleCommandConsoleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E83508E11E496B3C007DAECA /* DLGDebugConsoleCommandConsoleButton.m */; };
+		E83508F31E496B3C007DAECA /* DLGDebugConsoleCommandConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = E83508E11E496B3C007DAECA /* DLGDebugConsoleCommandConsole.m */; };
 		E83508F41E496B3C007DAECA /* DLGDebugConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = E83508E31E496B3C007DAECA /* DLGDebugConsole.m */; };
 		E83508F51E496B3C007DAECA /* DLGDebugConsoleAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = E83508E51E496B3C007DAECA /* DLGDebugConsoleAgent.m */; };
 		E83508F61E496B3C007DAECA /* DLGDebugConsoleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E83508E81E496B3C007DAECA /* DLGDebugConsoleView.m */; };
@@ -55,8 +55,8 @@
 		E83508DD1E496B3C007DAECA /* DLGDebugConsoleCommandShowServerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLGDebugConsoleCommandShowServerInfo.m; sourceTree = "<group>"; };
 		E83508DE1E496B3C007DAECA /* DLGDebugConsoleCommandShowUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLGDebugConsoleCommandShowUserInfo.h; sourceTree = "<group>"; };
 		E83508DF1E496B3C007DAECA /* DLGDebugConsoleCommandShowUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLGDebugConsoleCommandShowUserInfo.m; sourceTree = "<group>"; };
-		E83508E01E496B3C007DAECA /* DLGDebugConsoleCommandConsoleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLGDebugConsoleCommandConsoleButton.h; sourceTree = "<group>"; };
-		E83508E11E496B3C007DAECA /* DLGDebugConsoleCommandConsoleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLGDebugConsoleCommandConsoleButton.m; sourceTree = "<group>"; };
+		E83508E01E496B3C007DAECA /* DLGDebugConsoleCommandConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLGDebugConsoleCommandConsole.h; sourceTree = "<group>"; };
+		E83508E11E496B3C007DAECA /* DLGDebugConsoleCommandConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLGDebugConsoleCommandConsole.m; sourceTree = "<group>"; };
 		E83508E21E496B3C007DAECA /* DLGDebugConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLGDebugConsole.h; sourceTree = "<group>"; };
 		E83508E31E496B3C007DAECA /* DLGDebugConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLGDebugConsole.m; sourceTree = "<group>"; };
 		E83508E41E496B3C007DAECA /* DLGDebugConsoleAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLGDebugConsoleAgent.h; sourceTree = "<group>"; };
@@ -162,8 +162,8 @@
 			children = (
 				E83508D51E496B3C007DAECA /* DLGDebugConsoleCommandHelp.h */,
 				E83508D61E496B3C007DAECA /* DLGDebugConsoleCommandHelp.m */,
-				E83508E01E496B3C007DAECA /* DLGDebugConsoleCommandConsoleButton.h */,
-				E83508E11E496B3C007DAECA /* DLGDebugConsoleCommandConsoleButton.m */,
+				E83508E01E496B3C007DAECA /* DLGDebugConsoleCommandConsole.h */,
+				E83508E11E496B3C007DAECA /* DLGDebugConsoleCommandConsole.m */,
 				E83508DA1E496B3C007DAECA /* DLGDebugConsoleCommandShowFrame.h */,
 				E83508DB1E496B3C007DAECA /* DLGDebugConsoleCommandShowFrame.m */,
 				E83508D81E496B3C007DAECA /* DLGDebugConsoleCommandNet.h */,
@@ -258,7 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E83508F31E496B3C007DAECA /* DLGDebugConsoleCommandConsoleButton.m in Sources */,
+				E83508F31E496B3C007DAECA /* DLGDebugConsoleCommandConsole.m in Sources */,
 				E83508BC1E496848007DAECA /* ViewController.m in Sources */,
 				E83508EF1E496B3C007DAECA /* DLGDebugConsoleCommandNet.m in Sources */,
 				E83508ED1E496B3C007DAECA /* UIWindow+DLGDebugConsole.m in Sources */,

@@ -15,7 +15,6 @@ static NSMutableString *networkLogs;
 
 #ifdef DEBUG
 
-#import "DLGDebugConsoleAgent.h"
 #define SERVER_HOST ([DLGDebugConsoleAgent instance].serverHost)
 
 #else
@@ -107,6 +106,14 @@ static NSMutableString *networkLogs;
         }
         [networkLogs appendString:@"Disconnected.\n"];
     }
+}
+
+- (IBAction)addConsoleView:(id)sender {
+    [DLGDebugConsole addConsoleView];
+}
+
+- (IBAction)removeConsoleView:(id)sender {
+    [DLGDebugConsole removeConsoleView];
 }
 
 + (NSDictionary *)user {

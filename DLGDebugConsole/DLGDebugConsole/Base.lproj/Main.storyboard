@@ -89,31 +89,67 @@
                                 <color key="textColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Console" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncf-mG-xIU">
+                                <rect key="frame" x="16" y="239" width="72" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="R4C-Fs-nEb"/>
+                                    <constraint firstAttribute="width" constant="72" id="v6C-SP-Jxl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Of4-BB-w4f">
+                                <rect key="frame" x="16" y="268" width="80" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="J9G-uA-2XH"/>
+                                    <constraint firstAttribute="height" constant="30" id="Ubd-kb-iHv"/>
+                                </constraints>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addConsoleView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W1T-Il-Bwi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZI-Zk-qFq">
+                                <rect key="frame" x="104" y="268" width="80" height="30"/>
+                                <state key="normal" title="Remove"/>
+                                <connections>
+                                    <action selector="removeConsoleView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rbk-t1-jY1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vCY-os-xEg" firstAttribute="leading" secondItem="fQw-mg-cab" secondAttribute="trailing" constant="8" id="1T9-Su-OG3"/>
                             <constraint firstItem="2oU-zT-yBW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="5DX-CW-i1R"/>
+                            <constraint firstItem="mZI-Zk-qFq" firstAttribute="centerY" secondItem="Of4-BB-w4f" secondAttribute="centerY" id="6dF-48-iSf"/>
                             <constraint firstItem="mJi-Hc-FYA" firstAttribute="height" secondItem="0h7-s3-9uj" secondAttribute="height" id="7op-8i-J8p"/>
                             <constraint firstItem="vCY-os-xEg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="8as-KT-CwZ"/>
                             <constraint firstItem="Udy-ap-rE9" firstAttribute="width" secondItem="0fu-Jm-4Vs" secondAttribute="width" id="9EN-az-x5v"/>
                             <constraint firstItem="mJi-Hc-FYA" firstAttribute="centerY" secondItem="0h7-s3-9uj" secondAttribute="centerY" id="AUq-Pm-QMb"/>
+                            <constraint firstItem="mZI-Zk-qFq" firstAttribute="height" secondItem="Of4-BB-w4f" secondAttribute="height" id="B66-jV-VUr"/>
                             <constraint firstItem="Udy-ap-rE9" firstAttribute="centerY" secondItem="0fu-Jm-4Vs" secondAttribute="centerY" id="Dbq-ML-h2E"/>
+                            <constraint firstItem="ncf-mG-xIU" firstAttribute="top" secondItem="0fu-Jm-4Vs" secondAttribute="bottom" constant="32" id="FzY-gM-adj"/>
                             <constraint firstItem="2oU-zT-yBW" firstAttribute="top" secondItem="awF-8Z-3cx" secondAttribute="bottom" constant="8" id="HuP-5W-HCy"/>
                             <constraint firstItem="awF-8Z-3cx" firstAttribute="top" secondItem="0h7-s3-9uj" secondAttribute="bottom" constant="32" id="IPF-5X-yDV"/>
                             <constraint firstItem="mJi-Hc-FYA" firstAttribute="leading" secondItem="0h7-s3-9uj" secondAttribute="trailing" constant="8" id="Jw5-lB-Ix9"/>
                             <constraint firstItem="fQw-mg-cab" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="Odg-oW-mPH"/>
+                            <constraint firstItem="mZI-Zk-qFq" firstAttribute="leading" secondItem="Of4-BB-w4f" secondAttribute="trailing" constant="8" id="RCf-2S-7Xr"/>
                             <constraint firstItem="Udy-ap-rE9" firstAttribute="height" secondItem="0fu-Jm-4Vs" secondAttribute="height" id="SwG-od-Sdt"/>
                             <constraint firstItem="fQw-mg-cab" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="XoS-jf-wMC"/>
                             <constraint firstItem="0h7-s3-9uj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="c4F-zw-8WB"/>
+                            <constraint firstItem="ncf-mG-xIU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="dzl-OH-sQK"/>
+                            <constraint firstItem="Of4-BB-w4f" firstAttribute="top" secondItem="ncf-mG-xIU" secondAttribute="bottom" constant="8" id="gcf-Jk-teR"/>
                             <constraint firstItem="0fu-Jm-4Vs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="ivF-w7-HIg"/>
                             <constraint firstItem="Udy-ap-rE9" firstAttribute="leading" secondItem="0fu-Jm-4Vs" secondAttribute="trailing" constant="8" id="mLH-34-V1V"/>
                             <constraint firstItem="0h7-s3-9uj" firstAttribute="top" secondItem="fQw-mg-cab" secondAttribute="bottom" constant="8" id="nXO-pE-CJG"/>
                             <constraint firstItem="0fu-Jm-4Vs" firstAttribute="top" secondItem="2oU-zT-yBW" secondAttribute="bottom" constant="8" id="ogZ-zf-h59"/>
+                            <constraint firstItem="mZI-Zk-qFq" firstAttribute="width" secondItem="Of4-BB-w4f" secondAttribute="width" id="pal-uX-Gs1"/>
                             <constraint firstItem="awF-8Z-3cx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="qCX-MS-x6w"/>
                             <constraint firstAttribute="trailing" secondItem="2oU-zT-yBW" secondAttribute="trailing" constant="16" id="qhh-lh-w07"/>
                             <constraint firstItem="mJi-Hc-FYA" firstAttribute="width" secondItem="0h7-s3-9uj" secondAttribute="width" id="t7v-Ch-BIT"/>
                             <constraint firstAttribute="trailing" secondItem="vCY-os-xEg" secondAttribute="trailing" constant="16" id="vDk-CV-ZF3"/>
+                            <constraint firstItem="Of4-BB-w4f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="zYL-j3-Oyb"/>
                         </constraints>
                     </view>
                     <connections>

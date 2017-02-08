@@ -11,7 +11,7 @@
 #ifdef DEBUG
 
 #import "DLGDebugConsoleCommandHelp.h"
-#import "DLGDebugConsoleCommandConsoleButton.h"
+#import "DLGDebugConsoleCommandConsole.h"
 #import "DLGDebugConsoleCommandNet.h"
 #import "DLGDebugConsoleCommandShowFrame.h"
 #import "DLGDebugConsoleCommandShowUserInfo.h"

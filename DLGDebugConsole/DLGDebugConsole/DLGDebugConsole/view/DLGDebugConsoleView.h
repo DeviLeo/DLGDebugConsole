@@ -23,8 +23,11 @@
 
 @property (nonatomic) UIWindow *window;
 @property (nonatomic, readonly) BOOL shouldNotBeDragged;
+@property (nonatomic, readonly) BOOL expanded;
 
 + (instancetype)instance;
+- (void)doExpand;
+- (void)doCollapse;
 
 #endif
 
