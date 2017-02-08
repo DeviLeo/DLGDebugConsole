@@ -15,7 +15,7 @@
 
 @interface DLGDebugConsoleCommandNet ()
 
-@property (nonatomic) NSArray *PARAMS;
+@property (nonatomic) NSArray<DLGDebugConsoleCommandParameter *> *parameters;
 
 @end
 
@@ -29,15 +29,15 @@
     self = [super initWithDelegate:delegate];
     
     if (self) {
-        [self initPARAMS];
+        [self initParameters];
         [self initCommand];
     }
     
     return self;
 }
 
-- (void)initPARAMS {
-    self.PARAMS = @[
+- (void)initParameters {
+    self.parameters = @[
                     [[DLGDebugConsoleCommandParameter alloc] initWithName:@"Debug ON/OFF" andParam:@"-dbg" andDetail:@"Show or change debug status."],
                     [[DLGDebugConsoleCommandParameter alloc] initWithName:@"Show logs" andParam:@"-log" andDetail:@"Show recent network logs."]
                     ];
@@ -49,7 +49,7 @@
     self.usage = @"net <parameters>";
     self.brief = @"Config network communication.";
     NSMutableString *ms = [[NSMutableString alloc] init];
-    [self.PARAMS enumerateObjectsUsingBlock:^(DLGDebugConsoleCommandParameter *param, NSUInteger idx, BOOL *stop) {
+    [self.parameters enumerateObjectsUsingBlock:^(DLGDebugConsoleCommandParameter *param, NSUInteger idx, BOOL *stop) {
         [ms appendFormat:@"%@ : %@\n", param.param, param.detail];
     }];
     self.detail = ms;
@@ -67,7 +67,7 @@
     } else {
         for (NSUInteger i = 0; i < count; ++i) {
             NSString *key = params[i];
-            if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[0]).param] == NSOrderedSame) {
+            if ([key compare:self.parameters[0].param] == NSOrderedSame) {
                 NSString *value = nil;
                 if (++i < count) { value = params[i]; }
                 if (value != nil && value.length == 1) {
@@ -75,7 +75,7 @@
                     agent.enableDebugNetwork = enableDebugNetwork;
                     [ms appendFormat:@"Set network debug %@\n", (enableDebugNetwork ? @"ON" : @"OFF")];
                 }
-            } else if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[1]).param] == NSOrderedSame) {
+            } else if ([key compare:self.parameters[1].param] == NSOrderedSame) {
                 NSString *logs = agent.networkLogs;
                 if (logs != nil && logs.length > 0) [ms appendFormat:@"%@\n", logs];
                 else [ms appendFormat:@"%@\n", @"No network logs."];
@@ -96,7 +96,6 @@
     
     return YES;
 }
-
 
 #endif
 

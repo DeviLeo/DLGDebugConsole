@@ -12,10 +12,13 @@
 
 #import "DLGDebugConsoleCommandHelp.h"
 #import "DLGDebugConsoleCommandConsole.h"
-#import "DLGDebugConsoleCommandNet.h"
 #import "DLGDebugConsoleCommandShowFrame.h"
+
+// Import commands' headers here
+#import "DLGDebugConsoleCommandNet.h"
 #import "DLGDebugConsoleCommandShowUserInfo.h"
 #import "DLGDebugConsoleCommandShowServerInfo.h"
+#import "DLGDebugConsoleCommandSample.h"
 
 #endif
 

@@ -15,7 +15,7 @@
 
 @interface DLGDebugConsoleCommandShowFrame ()
 
-@property (nonatomic) NSArray *PARAMS;
+@property (nonatomic) NSArray<DLGDebugConsoleCommandParameter *> *parameters;
 
 @end
 
@@ -29,15 +29,15 @@
     self = [super initWithDelegate:delegate];
     
     if (self) {
-        [self initPARAMS];
+        [self initParameters];
         [self initCommand];
     }
     
     return self;
 }
 
-- (void)initPARAMS {
-    self.PARAMS = @[
+- (void)initParameters {
+    self.parameters = @[
                     [[DLGDebugConsoleCommandParameter alloc] initWithName:@"All Frames" andParam:@"-all" andDetail:@"Show all visible views' frame."],
                     [[DLGDebugConsoleCommandParameter alloc] initWithName:@"Window Frame" andParam:@"-win" andDetail:@"Show window's frame."],
                     [[DLGDebugConsoleCommandParameter alloc] initWithName:@"Status Bar Frame" andParam:@"-sb" andDetail:@"Show status bar frame."],
@@ -53,7 +53,7 @@
     self.usage = @"sf <parameters>";
     self.brief = @"Show view's frame.";
     NSMutableString *ms = [[NSMutableString alloc] init];
-    [self.PARAMS enumerateObjectsUsingBlock:^(DLGDebugConsoleCommandParameter *param, NSUInteger idx, BOOL *stop) {
+    [self.parameters enumerateObjectsUsingBlock:^(DLGDebugConsoleCommandParameter *param, NSUInteger idx, BOOL *stop) {
         [ms appendFormat:@"%@ : %@\n", param.param, param.detail];
     }];
     self.detail = ms;
@@ -70,27 +70,27 @@
     CGRect currentViewFrame = [agent getCurrentViewFrame];
     CGRect tabBarFrame = [agent getTabBarFrame];
     
-    BOOL showAll = (params.count == 0 || [params containsObject:((DLGDebugConsoleCommandParameter *)self.PARAMS[0]).param]);
+    BOOL showAll = (params.count == 0 || [params containsObject:self.parameters[0].param]);
     
     // App Window Info
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    if (showAll || [params containsObject:((DLGDebugConsoleCommandParameter *)self.PARAMS[1]).param])
+    if (showAll || [params containsObject:self.parameters[1].param])
         [ms appendFormat:@"Window Frame: %@\n", NSStringFromCGRect(window.frame)];
     
     // Status Bar
-    if (showAll || [params containsObject:((DLGDebugConsoleCommandParameter *)self.PARAMS[2]).param])
+    if (showAll || [params containsObject:self.parameters[2].param])
         [ms appendFormat:@"Status Bar frame: %@\n", NSStringFromCGRect(statusBarFrame)];
     
     // Navigation Controller
-    if (showAll || [params containsObject:((DLGDebugConsoleCommandParameter *)self.PARAMS[3]).param])
+    if (showAll || [params containsObject:self.parameters[3].param])
         [ms appendFormat:@"Navigation Bar Frame: %@\n", NSStringFromCGRect(navigationBarFrame)];
     
     // Bottom Tab Bar
-    if (showAll || [params containsObject:((DLGDebugConsoleCommandParameter *)self.PARAMS[4]).param])
+    if (showAll || [params containsObject:self.parameters[4].param])
         [ms appendFormat:@"Bottom Tab Bar Frame: %@\n", NSStringFromCGRect(tabBarFrame)];
     
     // Current View Controller Info
-    if (showAll || [params containsObject:((DLGDebugConsoleCommandParameter *)self.PARAMS[5]).param])
+    if (showAll || [params containsObject:self.parameters[5].param])
         [ms appendFormat:@"Current VC Frame: %@\n", NSStringFromCGRect(currentViewFrame)];
     
     if (ms.length == 0) {

@@ -15,7 +15,7 @@
 
 @interface DLGDebugConsoleCommandShowServerInfo ()
 
-@property (nonatomic) NSArray *PARAMS;
+@property (nonatomic) NSArray<DLGDebugConsoleCommandParameter *> *parameters;
 
 @end
 
@@ -29,15 +29,15 @@
     self = [super initWithDelegate:delegate];
     
     if (self) {
-        [self initPARAMS];
+        [self initParameters];
         [self initCommand];
     }
     
     return self;
 }
 
-- (void)initPARAMS {
-    self.PARAMS = @[
+- (void)initParameters {
+    self.parameters = @[
                     [[DLGDebugConsoleCommandParameter alloc] initWithName:@"All Servers Information" andParam:@"-all" andDetail:@"Show all servers' information."],
                     [[DLGDebugConsoleCommandParameter alloc] initWithName:@"Server Host" andParam:@"-host" andDetail:@"Show or modify the server host."],
                     [[DLGDebugConsoleCommandParameter alloc] initWithName:@"Fast Switch Server Host" andParam:@"-fs" andDetail:@"Fast modify the server host to predefined server host."]
@@ -50,7 +50,7 @@
     self.usage = @"svr <parameters> [values]";
     self.brief = @"Show or modify server's information.";
     NSMutableString *ms = [[NSMutableString alloc] init];
-    [self.PARAMS enumerateObjectsUsingBlock:^(DLGDebugConsoleCommandParameter *param, NSUInteger idx, BOOL *stop) {
+    [self.parameters enumerateObjectsUsingBlock:^(DLGDebugConsoleCommandParameter *param, NSUInteger idx, BOOL *stop) {
         [ms appendFormat:@"%@ : %@\n", param.param, param.detail];
     }];
     self.detail = ms;
@@ -63,12 +63,12 @@
     NSMutableString *ms = [[NSMutableString alloc] init];
     
     NSUInteger count = params.count;
-    if (params.count == 0 || [params containsObject:((DLGDebugConsoleCommandParameter *)self.PARAMS[0]).param]) {
+    if (params.count == 0 || [params containsObject:self.parameters[0].param]) {
         [ms appendFormat:@"Server: %@", agent.serverHost];
     } else {
         for (NSUInteger i = 0; i < count; ++i) {
             NSString *key = params[i];
-            if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[1]).param] == NSOrderedSame) {
+            if ([key compare:self.parameters[1].param] == NSOrderedSame) {
                 NSString *value = nil;
                 if (++i < count) { value = params[i]; }
                 if (value == nil || value.length == 0) {
@@ -81,7 +81,7 @@
                     agent.serverHost = value;
                     [ms appendFormat:@"Server changed. %@ -> %@\n", oldServerHost, value];
                 }
-            } else if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[2]).param] == NSOrderedSame) {
+            } else if ([key compare:self.parameters[2].param] == NSOrderedSame) {
                 NSString *value = nil;
                 NSArray *servers = [agent fastSwitchServerHostList];
                 if (++i < count) { value = params[i]; }

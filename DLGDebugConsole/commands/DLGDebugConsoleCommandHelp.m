@@ -23,7 +23,7 @@
 }
 
 - (void)initCommand {
-    self.name = @"Debug Command Help";
+    self.name = @"Command Help";
     self.command = @"?";
     self.usage = @"? <command>";
     self.brief = @"Show command help.";

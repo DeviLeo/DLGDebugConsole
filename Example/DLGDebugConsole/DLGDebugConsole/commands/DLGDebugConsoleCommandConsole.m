@@ -14,7 +14,7 @@
 
 @interface DLGDebugConsoleCommandConsole ()
 
-@property (nonatomic) NSArray *PARAMS;
+@property (nonatomic) NSArray<DLGDebugConsoleCommandParameter *> *parameters;
 
 @end
 
@@ -28,15 +28,15 @@
     self = [super initWithDelegate:delegate];
     
     if (self) {
-        [self initPARAMS];
+        [self initParameters];
         [self initCommand];
     }
     
     return self;
 }
 
-- (void)initPARAMS {
-    self.PARAMS = @[
+- (void)initParameters {
+    self.parameters = @[
                     [[DLGDebugConsoleCommandParameter alloc] initWithName:@"Console Collapsed Frame" andParam:@"-cf" andDetail:@"Show or modify console's collapsed frame (x,y,w,h)."],
                     [[DLGDebugConsoleCommandParameter alloc] initWithName:@"Console Collapsed Origin" andParam:@"-co" andDetail:@"Show or modify console's collapsed origin (x,y)."],
                     [[DLGDebugConsoleCommandParameter alloc] initWithName:@"Console Collapsed Size" andParam:@"-cs" andDetail:@"Show or modify console's collapsed size (w,h)."],
@@ -62,7 +62,7 @@
     self.usage = @"c <parameters> [values]";
     self.brief = @"Show or modify Console's frame and hide.";
     NSMutableString *ms = [[NSMutableString alloc] init];
-    [self.PARAMS enumerateObjectsUsingBlock:^(DLGDebugConsoleCommandParameter *param, NSUInteger idx, BOOL *stop) {
+    [self.parameters enumerateObjectsUsingBlock:^(DLGDebugConsoleCommandParameter *param, NSUInteger idx, BOOL *stop) {
         [ms appendFormat:@"%@ : %@\n", param.param, param.detail];
     }];
     self.detail = ms;
@@ -93,7 +93,7 @@
         }
         for (NSUInteger i = 0; i < count; ++i) {
             NSString *key = params[i];
-            if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[0]).param] == NSOrderedSame) {
+            if ([key compare:self.parameters[0].param] == NSOrderedSame) {
 #pragma mark - Collapsed Frame
                 BOOL modified = NO;
                 NSString *p = nil;
@@ -131,7 +131,7 @@
                     }
                 }
                 if (!modified) { [ms appendFormat:@"Console Collapsed Frame: %@", NSStringFromCGRect(collapsedFrame)]; }
-            } else if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[1]).param] == NSOrderedSame) {
+            } else if ([key compare:self.parameters[1].param] == NSOrderedSame) {
 #pragma mark Collapsed Origin
                 BOOL modified = NO;
                 NSString *p = nil;
@@ -153,7 +153,7 @@
                     }
                 }
                 if (!modified) { [ms appendFormat:@"Console Collapsed Origin: %@", NSStringFromCGPoint(collapsedFrame.origin)]; }
-            } else if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[2]).param] == NSOrderedSame) {
+            } else if ([key compare:self.parameters[2].param] == NSOrderedSame) {
 #pragma mark Collapsed Size
                 BOOL modified = NO;
                 NSString *p = nil;
@@ -188,7 +188,7 @@
                     }
                 }
                 if (!modified) { [ms appendFormat:@"Console Collapsed Size: %@", NSStringFromCGSize(collapsedFrame.size)]; }
-            } else if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[3]).param] == NSOrderedSame) {
+            } else if ([key compare:self.parameters[3].param] == NSOrderedSame) {
 #pragma mark Collapsed X
                 NSString *xs = nil;
                 if (++i < count) { xs = params[i]; }
@@ -204,7 +204,7 @@
                 } else {
                     [ms appendFormat:@"Console Collapsed X: %f", collapsedFrame.origin.x];
                 }
-            } else if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[4]).param] == NSOrderedSame) {
+            } else if ([key compare:self.parameters[4].param] == NSOrderedSame) {
 #pragma mark Collapsed Y
                 NSString *ys = nil;
                 if (++i < count) { ys = params[i]; }
@@ -220,7 +220,7 @@
                 } else {
                     [ms appendFormat:@"Console Collapsed Y: %f", collapsedFrame.origin.y];
                 }
-            } else if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[5]).param] == NSOrderedSame) {
+            } else if ([key compare:self.parameters[5].param] == NSOrderedSame) {
 #pragma mark Collapsed Width
                 NSString *ws = nil;
                 if (++i < count) { ws = params[i]; }
@@ -250,7 +250,7 @@
                 } else {
                     [ms appendFormat:@"Console Collapsed Width: %f", collapsedFrame.size.width];
                 }
-            } else if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[6]).param] == NSOrderedSame) {
+            } else if ([key compare:self.parameters[6].param] == NSOrderedSame) {
 #pragma mark Collapsed Height
                 NSString *hs = nil;
                 if (++i < count) { hs = params[i]; }
@@ -281,7 +281,7 @@
                 } else {
                     [ms appendFormat:@"Console Collapsed Height: %f", collapsedFrame.size.height];
                 }
-            } else if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[7]).param] == NSOrderedSame) {
+            } else if ([key compare:self.parameters[7].param] == NSOrderedSame) {
 #pragma mark - Expanded Frame
                 BOOL modified = NO;
                 NSString *p = nil;
@@ -318,7 +318,7 @@
                     }
                 }
                 if (!modified) { [ms appendFormat:@"Console Expanded Frame: %@", NSStringFromCGRect(expandedFrame)]; }
-            } else if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[8]).param] == NSOrderedSame) {
+            } else if ([key compare:self.parameters[8].param] == NSOrderedSame) {
 #pragma mark Expanded Origin
                 BOOL modified = NO;
                 NSString *p = nil;
@@ -340,7 +340,7 @@
                     }
                 }
                 if (!modified) { [ms appendFormat:@"Console Expanded Origin: %@", NSStringFromCGPoint(expandedFrame.origin)]; }
-            } else if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[9]).param] == NSOrderedSame) {
+            } else if ([key compare:self.parameters[9].param] == NSOrderedSame) {
 #pragma mark Expanded Size
                 BOOL modified = NO;
                 NSString *p = nil;
@@ -375,7 +375,7 @@
                     }
                 }
                 if (!modified) { [ms appendFormat:@"Console Expanded Size: %@", NSStringFromCGSize(expandedFrame.size)]; }
-            } else if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[10]).param] == NSOrderedSame) {
+            } else if ([key compare:self.parameters[10].param] == NSOrderedSame) {
 #pragma mark Expanded X
                 NSString *xs = nil;
                 if (++i < count) { xs = params[i]; }
@@ -391,7 +391,7 @@
                 } else {
                     [ms appendFormat:@"Console Expanded X: %f", expandedFrame.origin.x];
                 }
-            } else if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[11]).param] == NSOrderedSame) {
+            } else if ([key compare:self.parameters[11].param] == NSOrderedSame) {
 #pragma mark Expanded Y
                 NSString *ys = nil;
                 if (++i < count) { ys = params[i]; }
@@ -407,7 +407,7 @@
                 } else {
                     [ms appendFormat:@"Console Expanded Y: %f", expandedFrame.origin.y];
                 }
-            } else if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[12]).param] == NSOrderedSame) {
+            } else if ([key compare:self.parameters[12].param] == NSOrderedSame) {
 #pragma mark Expanded Width
                 NSString *ws = nil;
                 if (++i < count) { ws = params[i]; }
@@ -437,7 +437,7 @@
                 } else {
                     [ms appendFormat:@"Console Expanded Width: %f", expandedFrame.size.width];
                 }
-            } else if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[13]).param] == NSOrderedSame) {
+            } else if ([key compare:self.parameters[13].param] == NSOrderedSame) {
 #pragma mark Expanded Height
                 NSString *hs = nil;
                 if (++i < count) { hs = params[i]; }
@@ -467,7 +467,7 @@
                 } else {
                     [ms appendFormat:@"Console Expanded Height: %f", expandedFrame.size.height];
                 }
-            } else if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[14]).param] == NSOrderedSame) {
+            } else if ([key compare:self.parameters[14].param] == NSOrderedSame) {
 #pragma mark Hide Console
                 NSString *s = nil;
                 if (++i < count) { s = params[i]; }
@@ -482,7 +482,7 @@
                     [self.delegate hideConsoleButtonForSeconds:sec];
                 }
                 [ms appendFormat:@"Hide Console for %f %@.", sec, sec > 1.0f ? @"seconds" : @"second"];
-            } else if ([key compare:((DLGDebugConsoleCommandParameter *)self.PARAMS[15]).param] == NSOrderedSame) {
+            } else if ([key compare:self.parameters[15].param] == NSOrderedSame) {
 #pragma mark Clear logs
                 if ([self.delegate respondsToSelector:@selector(clearLogs)]) {
                     [self.delegate clearLogs];

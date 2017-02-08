@@ -19,7 +19,8 @@
                           [[DLGDebugConsoleCommandNet alloc] initWithDelegate:delegate],
                           [[DLGDebugConsoleCommandShowFrame alloc] initWithDelegate:delegate],
                           [[DLGDebugConsoleCommandShowUserInfo alloc] initWithDelegate:delegate],
-                          [[DLGDebugConsoleCommandShowServerInfo alloc] initWithDelegate:delegate]
+                          [[DLGDebugConsoleCommandShowServerInfo alloc] initWithDelegate:delegate],
+                          [[DLGDebugConsoleCommandSample alloc] initWithDelegate:delegate],
                           ];
     return commands;
 }
