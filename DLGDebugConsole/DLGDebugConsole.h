@@ -7,13 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+
+#ifdef DEBUG
+
 #import "UIWindow+DLGDebugConsole.h"
 #import "DLGDebugConsoleAgent.h"
 
+#endif
+
 @interface DLGDebugConsole : NSObject
+
+#ifdef DEBUG
 
 + (void)addConsoleView;
 + (void)addConsoleViewToWindow:(UIWindow *)window;
 + (void)removeConsoleView;
+
+#endif
 
 @end

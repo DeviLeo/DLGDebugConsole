@@ -7,9 +7,16 @@
 //
 
 #import "DLGDebugConsole.h"
+
+#ifdef DEBUG
+
 #import "DLGDebugConsoleView.h"
 
+#endif
+
 @implementation DLGDebugConsole
+
+#ifdef DEBUG
 
 + (void)addConsoleView {
     UIApplication *application = [UIApplication sharedApplication];
@@ -26,8 +33,11 @@
     [window addSubview:consoleView];
     window.consoleView = consoleView;
     
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:window action:@selector(handleGesture:)];
-    [consoleView addGestureRecognizer:pan];
+    NSArray *gestures = consoleView.gestureRecognizers;
+    if (gestures == nil || gestures.count == 0) {
+        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:window action:@selector(handleGesture:)];
+        [consoleView addGestureRecognizer:pan];
+    }
     
     // Init DebugAgent
     [DLGDebugConsoleAgent instance];
@@ -42,5 +52,7 @@
     }
     [consoleView removeFromSuperview];
 }
+
+#endif
 
 @end
