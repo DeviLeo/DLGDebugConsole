@@ -61,7 +61,7 @@
     self.command = @"spl";
     
     // Usage format
-    self.usage = @"s <parameters> [values]";
+    self.usage = @"spl <parameters> [values]";
     
     // A breif introduction to this command
     self.brief = @"This is a sample command.";
